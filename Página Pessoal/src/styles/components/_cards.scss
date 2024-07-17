@@ -1,0 +1,61 @@
+@use '../resources/variables';
+@use '../resources/mixins';
+
+#subjects, #projects{
+    @include mixins.flex-default(0px);
+    p{
+        @include mixins.box-reset();
+        @include mixins.font(normal, variables.$font-size-normal, variables.$color-light);
+        margin-bottom: 2rem;
+    }
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    .card{
+        @include mixins.flex-default(1.6rem);
+        padding: 2.8rem;
+        border-radius: 1.2rem;
+        border: solid 2px variables.$color-dark;
+        background-color: #27272a45;
+        transition: variables.$transition-default;  
+        ul{
+            @include mixins.box-reset(true);
+            @include mixins.list-reset();
+            gap: 8px;
+            li{
+                @include mixins.li-tag();
+                @include mixins.font(normal, variables.$font-size-small, variables.$color-light);
+            }
+        }
+        &:hover{
+            border: solid 2px variables.$color-emphasis;
+        }
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-large-laptop){
+    .cards{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-tablet){
+    .cards{
+        gap: 3.2rem;
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-cellphone){
+    .cards{
+        gap: 2rem;
+    }
+}
+
+#subjects{
+    ul{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,10 @@
+@use '../resources/variables';
+@use '../resources/mixins';
+
+.section-title{
+    @include mixins.font(bold, variables.$font-size-title, variables.$color-light);
+    @include mixins.box-reset();
+    span{
+        @include mixins.font(normal, 6.4rem, variables.$color-emphasis);
+    }
+}

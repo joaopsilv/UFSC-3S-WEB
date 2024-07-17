@@ -1,0 +1,64 @@
+@use '../resources/variables';
+@use '../resources/mixins';
+
+footer{
+    @include mixins.padding-default(16rem, 8rem);
+    margin-top: 5.2rem;
+    address{
+        padding-bottom: 2.4rem;
+        padding-top: 2.4rem;
+        border-top: solid 2px variables.$color-dark;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .contacts{
+            display: flex;
+            gap: 16px;
+            a{
+                @include mixins.font(bold, 2.4rem, variables.$color-medium);
+                @include mixins.hover-default();
+            }
+        }
+        p{
+            @include mixins.box-reset();
+            @include mixins.font(normal, variables.$font-size-normal, variables.$color-light);
+            font-style: normal;
+            span{
+                @include mixins.hover-default();
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-large-laptop){
+    footer{
+        @include mixins.padding-default(8rem, 8rem);
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-small-laptop){
+    footer{
+        address{
+            justify-content: flex-end;
+            .contacts{
+                flex-direction: row-reverse;
+            }
+            p{
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-tablet){
+    footer{
+        @include mixins.padding-default(4rem, 4rem);
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-cellphone){
+    footer{
+        margin-top: 4.8rem;
+        @include mixins.padding-default(3.2rem, 3.2rem);
+    }
+}

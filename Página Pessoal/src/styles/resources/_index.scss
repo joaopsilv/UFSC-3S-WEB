@@ -1,0 +1,58 @@
+@use './variables';
+
+body{
+    display: grid;
+    grid-template-areas: 
+    "aside header"
+    "aside main"
+    "aside footer";
+    grid-template-columns: 36rem 1fr;
+    grid-template-rows: repeat(3, auto);
+    min-height: 100vh;
+    background-color: variables.$color-body;
+    font-family: 'DM Sans', sans-serif;
+}
+
+header{
+    grid-area: header;
+}
+
+.aside-space{
+    grid-area: aside;
+}
+
+main{
+    grid-area: main;
+}
+
+footer{
+    grid-area: footer;
+}
+
+body::-webkit-scrollbar{
+    width: 8px;
+}
+  
+body::-webkit-scrollbar-track{
+    background: variables.$color-dark;
+}
+  
+body::-webkit-scrollbar-thumb{
+    background-color: variables.$color-emphasis;
+    border-radius: 2rem;
+}
+
+::selection{
+    background-color: variables.$color-select;
+}
+
+@media only screen and (max-width: variables.$breakpoint-tablet){
+    body{
+        grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+    }
+}
